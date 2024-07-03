@@ -24,16 +24,20 @@ $ pip install PHDSP
 ## Usage
 
 1. **Initialize and run WinterShield:**
-   ```python
-   if __name__ == "__main__":
-       protector = HardDriveProtector(
-           directory="/path/to/directory",
-           backup_path="/path/to/backup",
-           threshold=5,
-           check_interval=10
-       )
-       protector.monitor_directory()
-   ```
+
+```python
+from phdsp.main import HardDriveProtector
+
+
+protector = HardDriveProtector(
+    directory="/path/to/directory",
+    backup_path="/path/to/backup",
+    threshold=5,
+    check_interval=10,
+)
+protector.monitor_directory()
+
+```
 
 2. **Configuration:**
    - `directory`: The path to the directory you want to monitor.
