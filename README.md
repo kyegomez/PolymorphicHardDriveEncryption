@@ -16,21 +16,10 @@ Polymorphic Hard Drive Security Protocol (PHDSP) is a cutting-edge AI-based hard
 - **Future-Proof**: Designed for future enhancements like machine learning-based anomaly detection, behavior analysis, and dynamic code loading.
 
 ## Installation
+```bash
+$ pip install PHDSP
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/kyegomez/PolymorphicHardDriveEncryption.git
-   cd WinterShield
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install cryptography
-   ```
-
-3. **Set up your backup files:**
-   - Place a backup of the script (`ai_code.py.enc`) in the backup directory.
-   - Place a system backup file (`system_backup.tar.gz.enc`) in the backup directory.
 
 ## Usage
 
