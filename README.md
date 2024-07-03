@@ -20,7 +20,7 @@ WinterShield is a robust and dynamic AI-based hard drive protection system. Insp
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/WinterShield.git
+   git clone https://github.com/kyegomez/WinterShield.git
    cd WinterShield
    ```
 
