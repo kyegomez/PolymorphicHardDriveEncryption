@@ -19,7 +19,7 @@ Polymorphic Hard Drive Security Protocol (PHDSP) is a cutting-edge AI-based hard
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/WinterShield.git
+   [git clone https://github.com/yourusername/WinterShield.git](https://github.com/kyegomez/PolymorphicHardDriveEncryption)
    cd WinterShield
    ```
 
