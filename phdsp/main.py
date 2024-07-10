@@ -5,6 +5,7 @@ import subprocess
 import sys
 import time
 from typing import Dict
+from swarms.utils.loguru_logger import logger
 
 
 class HardDriveProtector:
@@ -42,6 +43,7 @@ class HardDriveProtector:
         Returns:
             str: The SHA-256 hash of the file.
         """
+        logger.info(f"Calculating hash for {file_path}")
         sha256_hash = hashlib.sha256()
         with open(file_path, "rb") as f:
             for byte_block in iter(lambda: f.read(4096), b""):
@@ -52,6 +54,7 @@ class HardDriveProtector:
         """
         Monitors the directory for changes.
         """
+        logger.info(f"Monitoring directory: {self.directory}")
         self.file_hashes = {
             f: self.get_file_hash(os.path.join(self.directory, f))
             for f in os.listdir(self.directory)
@@ -62,10 +65,10 @@ class HardDriveProtector:
                 file_path = os.path.join(self.directory, f)
                 new_hash = self.get_file_hash(file_path)
                 if f not in self.file_hashes:
-                    print(f"New file detected: {f}")
+                    logger.info(f"New file detected: {f}")
                     self.file_hashes[f] = new_hash
                 elif self.file_hashes[f] != new_hash:
-                    print(f"File modified: {f}")
+                    logger.info(f"File modified: {f}")
                     self.file_hashes[f] = new_hash
                     self.change_count += 1
                     if self.detect_anomaly():
@@ -79,8 +82,9 @@ class HardDriveProtector:
         Returns:
             bool: True if an anomaly is detected, False otherwise.
         """
+        logger.info(f"Change count: {self.change_count}")
         if self.change_count > self.threshold:
-            print("Anomaly detected!")
+            logger.info("Anomaly detected!")
             self.change_count = 0
             return True
         return False
@@ -89,7 +93,7 @@ class HardDriveProtector:
         """
         Rewrites its code to maintain protection.
         """
-        print("Rewriting code to maintain protection...")
+        logger.info("Rewriting code to maintain protection...")
         shutil.copy(
             os.path.join(self.backup_path, "ai_code.py"),
             os.path.abspath(__file__),
@@ -101,7 +105,7 @@ class HardDriveProtector:
         """
         Recovers the system to a known good state.
         """
-        print("Recovering system to a known good state...")
+        logger.info("Recovering system to a known good state...")
         backup_file = os.path.join(
             self.backup_path, "system_backup.tar.gz"
         )
@@ -109,7 +113,6 @@ class HardDriveProtector:
         subprocess.run(
             ["tar", "xzf", "/tmp/system_backup.tar.gz", "-C", "/"]
         )
-
 
 # if __name__ == "__main__":
 #     protector = HardDriveProtector(
